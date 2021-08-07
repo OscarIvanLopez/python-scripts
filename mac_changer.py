@@ -13,11 +13,11 @@ def get_arguments():
     parser.add_option("-i",
                       '--interface',
                       dest="interface",
-                      help="Herramienta para cambiar MAC")
+                      help="MAC addres change tool")
     parser.add_option("-m",
                       '--mac',
                       dest="new_mac",
-                      help="Nueva direccion Mac")
+                      help="New MAC addres")
 
     (options, arguments) = parser.parse_args()
 
@@ -34,7 +34,7 @@ def change_mac(interface, new_mac):
     change the mac addres
     """
     print(
-        f"[+]  Cambiando Direccion MAC para {options.interface} to {new_mac}")
+        f"[+]  changing addres for {options.interface} to {new_mac}")
 
     subprocess.call(["ifconfig", interface, "down"])
     subprocess.call(["ifconfig", interface, "hw", "ether", new_mac])
@@ -51,7 +51,7 @@ def get_current_mac(interface):
     if mac_addres_search_result:
         print(mac_addres_search_result.group(0))
     else:
-        print("[-]  An error with the MAC direction")
+        print("[-]  An error with the MAC addres")
 
 
 options = get_arguments()
